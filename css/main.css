@@ -1,0 +1,58 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    overflow:hidden;
+    font-family: Helvetica, sans-serif,Arial;
+    background: #696e6a;
+    color: #ccc;
+}
+.spell{
+    height:5%;
+    width:100%;
+    min-height: 50px;
+    color: #666;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+.input{
+    position: absolute;
+    width: 90%;
+    bottom:1%;
+}
+footer{
+    width:90%;
+    align-content: center;
+    margin: auto;
+
+}
+.inline{
+    display:inline;
+}
+.suggestion{
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    border-color: black;
+}
+.suggestionelement{
+    min-width:30%;
+    margin: 20px;
+}
+.countdown{
+    height:80vh;
+}
+.counter{
+    height: 100%;
+    margin: auto;
+    font-size: 35vh;
+}
+.info{
+    font-size: 2em;
+    transform: translateY(-2em);
+
+}
+center{
+    height:100%;
+    width: 100%;
+}
