@@ -7,8 +7,14 @@
   <title>Abra Ka Dabra</title>
   <meta name="description" content="The game">
   <meta name="author" content="Dinesh Devkota">
+
+  <script type="text/javascript" src="assets/attack.js"></script>
+  <script type="text/javascript" src="assets/defense.js"></script>
+  <script type="text/javascript" src="assets/heal.json"></script>
   <script src="js/jquery.js"></script>
   <script src="js/game.js"></script>
+
+
   <link rel="icon" type='image/svg+xml'href="img/simon.svg"/>
   <link rel="stylesheet" href="css/main.css">
   <!-- <audio id='beep' preload="auto" src='audio/beep.wav'></audio> -->
@@ -22,6 +28,17 @@
   </div>
  
 </center>
+<div>
+  <div class="inline indicator hp">
+    <h3>HP</h3>
+    <h4 id=hp>180</h4>
+  </div>
+
+  <div class="inline indicator mp">
+    <h3>MP</h3>
+    <h4 id=mp>180</h4>
+  </div>
+</div>
   <footer>
   <div class="input" id=inputdiv>
     <center>

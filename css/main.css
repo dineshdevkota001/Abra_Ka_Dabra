@@ -56,3 +56,13 @@ center{
     height:100%;
     width: 100%;
 }
+.indicator{
+    position:absolute;
+    top: 0%;
+}
+.hp{
+    left:1em;
+}
+.mp{
+    right: 1em;
+}
