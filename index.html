@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
 
@@ -10,48 +11,117 @@
 
   <script type="text/javascript" src="assets/attack.js"></script>
   <script type="text/javascript" src="assets/defense.js"></script>
-  <script type="text/javascript" src="assets/heal.json"></script>
+
+  <script src="js/gamecontroller.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/dumbai.js"></script>
+  
   <script src="js/jquery.js"></script>
   <script src="js/game.js"></script>
 
 
-  <link rel="icon" type='image/svg+xml'href="img/simon.svg"/>
+  <link rel="icon" type='image/svg+xml' href="img/simon.svg" />
   <link rel="stylesheet" href="css/main.css">
   <!-- <audio id='beep' preload="auto" src='audio/beep.wav'></audio> -->
 </head>
 
 <body>
   <center>
-  <div class='countdown'>
-    <p class='counter' id='countertext'>Abra Kadabra</p>
-    <p class='hidden info' id=information>Select Level</p>
-  </div>
- 
-</center>
-<div>
-  <div class="inline indicator hp">
-    <h3>HP</h3>
-    <h4 id=hp>180</h4>
-  </div>
-
-  <div class="inline indicator mp">
-    <h3>MP</h3>
-    <h4 id=mp>180</h4>
-  </div>
-</div>
-  <footer>
-  <div class="input" id=inputdiv>
-    <center>
-
-    <div class="suggestion" id=suggestiondiv>
-      <p class='selectlevel inline suggestionelement' id=1>initiatus mode slime indicatum</p>
-      <p class='selectlevel inline suggestionelement' id=2>initiatus mode golem indicatum</p>
-      <p class='selectlevel inline suggestionelement' id=3>initiatus mode demon indicatum</p>
+    <div class='information1' id=title>
+      <p class='info' id=info1>You</p>
+      <p class='info' id='info'>Abra Kadabra</p>
+      <p class='hidden information' id=information>Select Level</p>
     </div>
   </center>
-    
-    <input class='spell' id='spell' type="text" label="Type the spell"/>
+  <div id='playerinfo'>
+    <div class="indicator p1">
+      <div class=parentblock>
+      <div>
+        <div class="inlineb">
+          <h4>HP</h4>
+          <h3 id=hpplayer1>180</h3>
+        </div>
+        <div class="inlineb">
+          <h4>MP</h4>
+          <h3 id=mpplayer1>180</h3>
+        </div>
+      </div>
+
+      <div>
+        <h1 class=info id=timeplayer1>3</h1>
+      </div>
+
+      <div>
+        <h3 id=damageplayer1>attack dp</h3>
+      </div>
+
+      <div>
+        <p id=spellplayer1>
+          spell
+        </p>
+      </div>
+
+    </div>
+  
   </div>
-</footer>
+      
+    <div class="indicator p2">
+      <div class=parentblock>
+        <div>
+          <div class="inlineb">
+            <h4>HP</h4>
+            <h3 id=hpplayer2>180</h3>
+          </div>
+          <div class="inlineb">
+            <h4>MP</h4>
+            <h3 id=mpplayer2>180</h3>
+          </div>
+        </div>
+  
+        <div>
+          <h1 class=info id=timeplayer2>3</h1>
+        </div>
+  
+        <div>
+          <h3 id=damageplayer2>attack dp</h3>
+        </div>
+  
+        <div>
+          <p id=spellplayer2>
+            spell
+          </p>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="input" id=inputdiv>
+      <center>
+        <div id=suggestiondiv>
+          <div class="suggestion">
+            <p class='selectlevel inline suggestionelement' id=suggest9></p>
+            <p class='selectlevel inline suggestionelement' id=suggest8></p>
+            <p class='selectlevel inline suggestionelement' id=suggest7></p>
+          </div>
+          <div class="suggestion">
+
+            <p class='selectlevel inline suggestionelement' id=suggest6></p>
+            <p class='selectlevel inline suggestionelement' id=suggest5></p>
+            <p class='selectlevel inline suggestionelement' id=suggest4></p>
+          </div>
+          <div class="suggestion">
+            <p class='selectlevel inline suggestionelement' id=suggest3>mode demon</p>
+            <p class='selectlevel inline suggestionelement' id=suggest2>mode golem</p>
+            <p class='selectlevel inline suggestionelement' id=suggest1>mode slime</p>
+
+          </div>
+        </div>
+      </center>
+      <input class='spell' id='spell' type="text" label="Type the spell" />
+    </div>
+  </footer>
 </body>
+
 </html>

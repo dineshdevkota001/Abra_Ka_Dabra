@@ -1,87 +1,85 @@
 let Game = {};
-Game.enteredSpell = '';
-$(document).ready(() => {
-    // initiate json
-    console.log(attack);    
-    
-    // initiate reflectors
-    // reflectors Game.spell for current and enteredSpell for entered spell
-    $('#spell').on('input',()=>{
-        Game.spell = $('#spell').val();
-        console.log(Game.spell)
-    })
+let players = [];
 
-    $('#spell').keypress(event=>{
+handleSubmit = () => {
+    switch (Game.difficulty.indexOf(Game.input)) {
+        case 0:
+        case 1:
+        case 2:
+            Game.level = Game.difficulty.indexOf(Game.input);
+            $('#spell').off('input')
+            console.log(Game.level)
+            Game.playerstate = 1;
+            Game.laststate = 0;
+            game()
+            break;
+        default:
+            console.log('invalid', Game.difficulty);
+            $('#information').html('These three are valid inputs')
+
+    }
+}
+
+$(document).ready(() => {
+    $('#info1').hide();
+    // $('#title').hide();
+    $('#playerinfo').hide(100);
+    $('#spell').on('input', () => {
+        Game.input = $('#spell').val()
+    })
+    Game.difficulty = [];
+    Game.difficulty.push($('#suggest1').html());
+    Game.difficulty.push($('#suggest2').html());
+    Game.difficulty.push($('#suggest3').html());
+
+    $('#spell').keypress(event => {
         var keycode = (event.keyCode ? event.keyCode : event.which);
-        if(keycode == '13'){
-            Game.enteredSpell = Game.spell;
-            Game.spell = '';
+        if (keycode == '13') {
+            handleSubmit()
             $('#spell').val('');
-            console.log('the used spell is'+ Game.enteredSpell);
         }
     });
-    Game.playerstate = 1;
-    // initiate event handlers
-    game();
+
 })
 
-const suggestSpell = () =>{
-    if (Game.playerstate === 1){
-        // idle state
-        suggestList = attack;
-    }
-    else if (Game.playerstate === 2){
-        // being attacked
-        suggestList = defense;
-    }
-    else{
-        suggestList = heal;
+const suggestSpell = () => {
+    if (Game.playerstate === Game.laststate) return;
+    switch (Game.playerstate){
+        case 1:
+            suggestList = attack;
+            break;
+        case 2:
+            suggestList = defense;
+            break;
+        default:
+            suggestList= Game.difficulty;
     }
 
-    for (let i = 0; i<3;i++){
-        $('#'+(i+1).toString()).html(suggestList[i].damage +'dp '+suggestList[i].cast + ' @' + suggestList[i].time.toString()+'s')
-        console.log(suggestList[i].damage +'dp '+suggestList[i].cast + ' @' + suggestList[i].time.toString()+'s')
-    }
-}
-
-const verifySpell = (spell)=>{
-    [attack,defense,heal].forEach( (lister, listindex)=>{
-    lister.forEach((element, index)=>{
-        if (spell == element.chant){
-            return {list: listindex, index: index}
+    suggestList.some((element,i)=>{
+        $('#suggest' + (i + 1).toString()).html(element.damage + 'dp ' + 
+                                                element.cast + ' @' + 
+                                                element.time.toString() + 's'+
+                                                element.mp.toString() + 'mp')
+        if (i >= 9){
+            return;
         }
     })
-});
-    return false
 }
 
-const game = () =>{
-    // initiate variables
-    Game.hp = 25 + Math.floor(5 * Math.random());
-    Game.mp = 25 + Math.floor(5 * Math.random());
-    // game loop
-    while(Game.hp>0){
-        // get type
-        
-        // display available modes
+const game = () => {
+    $('#title').hide();
+    $('#playerinfo').fadeIn(300);
+    const gamecontroller = new GameController(suggestSpell,Game);
+    console.log('starting game');
 
-        // check health
+    players.push(new Player('player1', 0, 500, 100, gamecontroller));
+    players.push(new Player('player2', 1, 500, 100, gamecontroller));
+    players[0].gamecontroller = gamecontroller;
+    players[1].gamecontroller = gamecontroller;
 
-        // change time
-    }
-}
-
-// anti cheat
-// compare the previous change to this one. if the change is greater than 5 then it is probably cheating
-
-
-// parser
-const input = () =>{
-    // check enter
-    // get changes
-    // return changes
-}
-
-const selection = () =>{
-    // selection thingy
+    let ai = new AI(Game.difficulty, players[1]);
+    $('#spell').on('input',() => { players[0].spell = $('#spell').val() });
+    handleSubmit = () => { players[0].usespell(); }
+    gamecontroller.players = players;
+    gamecontroller.ai = ai;
 }

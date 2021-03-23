@@ -29,6 +29,18 @@ footer{
 .inline{
     display:inline;
 }
+.inlineb{
+    display:inline-block;
+    width: 10em;
+}
+.parentblock{
+    align-items: center;
+    margin: auto;
+    align-content: center;
+    margin-left:14em;
+    margin-right: 14em;
+    margin-top:3em;
+}
 .suggestion{
     width: 100%;
     display: flex;
@@ -39,15 +51,12 @@ footer{
     min-width:30%;
     margin: 20px;
 }
-.countdown{
-    height:80vh;
-}
-.counter{
+.info{
     height: 100%;
     margin: auto;
     font-size: 35vh;
 }
-.info{
+.information{
     font-size: 2em;
     transform: translateY(-2em);
 
@@ -60,9 +69,9 @@ center{
     position:absolute;
     top: 0%;
 }
-.hp{
+.p1{
     left:1em;
 }
-.mp{
+.p2{
     right: 1em;
 }
