@@ -4,10 +4,10 @@ class GameController {
         this.respawnid = setInterval(() => {
             this.players.forEach(player=>{
                 player.increaseHP(1);
-                player.increaseMP(2);
+                player.increaseMP(4);
                 suggestSpell();
             })
-        }, 200);
+        }, 1000);
         this.game = game
     }
     

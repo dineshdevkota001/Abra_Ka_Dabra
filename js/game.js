@@ -72,8 +72,8 @@ const game = () => {
     const gamecontroller = new GameController(suggestSpell,Game);
     console.log('starting game');
 
-    players.push(new Player('player1', 0, 500, 100, gamecontroller));
-    players.push(new Player('player2', 1, 500, 100, gamecontroller));
+    players.push(new Player('player1', 0, 550, 800, gamecontroller));
+    players.push(new Player('player2', 1, 550, 800, gamecontroller));
     players[0].gamecontroller = gamecontroller;
     players[1].gamecontroller = gamecontroller;
 

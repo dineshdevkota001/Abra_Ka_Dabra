@@ -20,26 +20,31 @@ class AI {
         setTimeout(() => {
             this.player.usespell();
             this.typing = false;
-        }, 3000);
+            this.monitor();
+        }, 80*str.length);
 
     }
 
     typeSpell = (spelllist) => {
-        let spell = Math.floor(Math.random() * spelllist.length)
+        let spell;
+        do{
+           spell = Math.floor(Math.random() * spelllist.length)
+        }while(spelllist[spell].mp > this.player.mp-200)
         spell = spelllist[spell].cast;
         this.typechars(spell, 1, spelllist.length)
     }
     monitor = () => {
-
-        if (!this.typing) {
-            if (this.player.damage > 40) {
+            if(this.player.damage > 40||this.player.hp<400) {
+                if (!this.typing || Math.random()>0.8){
                 this.player.spell = '';
                 console.log('defendin');
                 this.typing = true;
                 clearInterval(this.timeoutid)
                 this.typeSpell(defense);
+                }
             }
             else {
+                if (!this.typing) {
                 console.log('typing');
                 this.typing = true;
                 this.typeSpell(attack);
@@ -51,12 +56,9 @@ class AI {
         this.difficulty = difficulty;
         this.typingdelay = 5000 / (difficulty + 1);
         console.log(this.typingdelay)
-        this.intervalid = setInterval(() => {
-            this.monitor();
-        }, 100);
+        this.monitor();
     }
     stop = () => {
-        clearInterval(this.intervalid);
         clearTimeout(this.timeoutid);
     }
 }
